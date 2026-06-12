@@ -30,7 +30,6 @@
 ## Download
 
 Grab the latest **`rtv-save-editor.exe`** from the [**Releases**](https://github.com/ovrrde/RtVSaveEditor/releases) page.
-No install needed - just run it.
 
 ---
 
