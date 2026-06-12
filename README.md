@@ -22,7 +22,7 @@
 | **Equipment** | Equip, swap, and unequip weapons, armor, and gear by slot. |
 | **Vitals & status** | Tweak health, energy, hydration, and condition flags. |
 | **Add items** | Browse and drop in any item from the game's catalog. |
-| **Auto-repair** | Detects and fixes broken or truncated saves - even rebuilding one that won't load. |
+| **Auto-repair** | Detects and fixes broken or truncated saves. |
 | **Safe by default** | Every save writes a `.tres.bak` backup first. |
 
 ---
@@ -45,7 +45,7 @@ No install needed - just run it.
 > grid sizes, and equipment slots. The game ships its assets in a packed `.pck`, so you first need
 > to extract the project with [**Godot RE Tools**](https://github.com/bruvzg/gdsdecomp), then point
 > the **project path** at the extracted folder. Without it the editor still runs, but falls back to
-> raw `res://` paths and default sizes.
+> raw `res://` paths and default sizes. Planned to remove this later down the line, but for now is somewhat required.
 
 ---
 
@@ -71,22 +71,12 @@ cargo run --release -p rtv_save_editor   # launch the app
 cargo test                               # run the test suite
 ```
 
-**Project layout**
-
-| Crate | Purpose |
-|---|---|
-| `core` | `.tres` parser, validator, and repair engine (zero dependencies) |
-| `editor` | the egui desktop GUI |
-
----
-
 ## Roadmap
 
-Support for the game's other saves is planned - **Cabin**, **Tent**, **Traders**, **World**,
-containers, and more. The `core` engine already reads them; they need typed models and UI views.
+Support for the game's other saves is planned - **Cabin**, **Tent**, **Traders**, **World**. 
 
 ---
 
 <div align="center">
-<sub>Not affiliated with or endorsed by the developers of Road to Vostok. Back up your saves.</sub>
+<sub>Back up your saves.</sub>
 </div>
