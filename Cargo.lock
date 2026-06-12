@@ -2116,7 +2116,6 @@ dependencies = [
  "egui",
  "rfd",
  "rtv_save_core",
- "ttf-parser",
 ]
 
 [[package]]

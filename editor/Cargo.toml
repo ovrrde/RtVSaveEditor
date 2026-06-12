@@ -12,4 +12,3 @@ rtv_save_core = { path = "../core" }
 eframe = { version = "0.31", default-features = false, features = ["glow", "default_fonts"] }
 egui = "0.31"
 rfd = "0.15"
-ttf-parser = "0.25"

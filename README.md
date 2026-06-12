@@ -1,86 +1,54 @@
+<!-- Replace OWNER/REPO below with your GitHub path once the repo is created. -->
+
 # RtV Save Editor
 
-A desktop editor and corruption repair tool for **Road to Vostok** `Character.tres`
-save files, written in Rust.
+A desktop editor and corruption-repair tool for **Road to Vostok** `Character.tres` save files.
 
-It was built after a truncated save (cut off mid-write at `casing = fals`, with the
-entire `[resource]` block missing) needed manual reconstruction. This tool detects
-and repairs that exact class of damage automatically, and lets you edit a save's
-stats, inventory, equipment and stash.
+[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+
+<p align="center">
+  <img src="media/screenshot.png" alt="RtV Save Editor" width="820">
+</p>
 
 ## Features
 
-- **Lossless `.tres` parsing** — untouched values round-trip byte-for-byte, so the
-  tool never gratuitously rewrites a save.
-- **Corruption detection** with precise, line-numbered diagnostics:
-  - truncated literals (`fals` → `false`)
-  - `SlotData` sub-resources cut off mid-write (missing fields)
-  - dangling `ExtResource` / `SubResource` references
-  - duplicate ids
-  - a missing main `[resource]` block (the headline failure mode)
-- **Auto-repair**, including reconstructing a missing `[resource]` block from the
-  declared items and whatever slots survived — partitioning recovered slots into
-  equipment vs. inventory, recreating lost items, and grid-packing the inventory so
-  nothing overlaps the loader's placement check.
-- **GUI editor** (egui) — a single, unified **Character** screen with a custom dark
-  "Vostok" theme (cards, amber accents), plus a separate **Diagnostics** view:
-  - **Left** — Vitals as interactive bar-sliders (drag to set, colour-graded), a
-    Conditions chip panel, and an Equipment list grouped by slot type.
-  - **Centre** — the in-game-style **8×12 grid**: items drawn at their real
-    cell/size, colour-coded by category, with condition bars and stack counts.
-    Drag to reposition (live green/red validity), **R** to rotate, click to select.
-    A segmented toggle switches the grid between **Inventory** and **Stash**.
-  - **Right** — selected-item details (condition/amount/rotate/remove) and an
-    always-visible **Add item** search over the game's item catalog. Clicking an
-    empty equipment slot fills it with a compatible item.
-- **Backups**: every save first copies the existing file to `*.tres.bak`.
+- **Visual inventory** — an in-game-style grid; drag to move items, rotate, edit condition and amounts.
+- **Equipment** — equip, swap, and unequip weapons, armor, and gear by slot.
+- **Vitals & status** — tweak health, energy, hydration, and condition flags.
+- **Add items** — browse and drop in any item from the game's catalog.
+- **Auto-repair** — detects and fixes broken/truncated saves (missing data, cut-off writes, dangling references), even rebuilding a save that won't load.
+- **Safe** — every save writes a `.tres.bak` backup first.
 
-## Layout
+## Download
 
-```
-core/    rtv_save_core — dependency-free parser + validator + repair + edit engine
-         (all logic lives here and is unit-tested against real save files)
-editor/  rtv_save_editor — thin egui GUI over the core
-```
+Grab the latest `rtv-save-editor.exe` from the [Releases](https://github.com/OWNER/REPO/releases) page. No install needed — just run it.
 
-## Build & run
+## Build from source
+
+Requires [Rust](https://rustup.rs/).
 
 ```sh
-cargo run --release -p rtv_save_editor          # launch the GUI
-cargo test -p rtv_save_core                     # run the engine tests
+cargo run --release -p rtv_save_editor   # launch the app
+cargo test                               # run the test suite
 ```
 
-Set the **Project** path in the toolbar to your game install (default
-`X:/RTVReversed`) and click *Rescan items* so the editor knows item names, grid
-sizes and equipment slots. The editor works without it, but only with raw
-`res://` paths.
+## Usage
 
-### Headless CLI
+1. **Open** your `Character.tres` (usually in `%APPDATA%\Roaming\Road to Vostok\`).
+2. Set the **project path** to your game install so the editor knows item names, sizes, and slots.
+3. Edit, then **Save** (a backup is written automatically).
 
-```sh
-# scan a save and print diagnostics
-cargo run -p rtv_save_core --example repair_cli -- scan  Character.tres
+## How repair works
 
-# repair a broken save (third arg = game project root, for item sizes)
-cargo run -p rtv_save_core --example repair_cli -- repair broken.tres fixed.tres X:/RTVReversed
-```
+The save lists every item the character owns, so repair never loses items. When a save is truncated, it reconstructs the missing data — completing cut-off entries and rebuilding the character body from what survived. Anything it can't recover (exact stats, original layout) is reset to sensible defaults, and every change is logged in the Diagnostics tab.
 
-## What repair can and can't recover
+## Project layout
 
-The `.tres` declares every item the character owned (the `ext_resource` list), so
-**no items are lost** — repair returns them all. What truncation destroys and repair
-cannot invent:
+| Crate    | Purpose                                                |
+| -------- | ------------------------------------------------------ |
+| `core`   | `.tres` parser, validator, and repair engine (no deps) |
+| `editor` | the egui desktop GUI                                   |
 
-- exact **stats** (health/energy/…) — reset to 100,
-- the original **inventory ↔ equipment ↔ stash split** and grid layout — items are
-  returned to the carried inventory for you to rearrange,
-- per-slot details (condition, loaded ammo) for any slot whose data didn't survive —
-  set to sensible defaults. Slots that *did* survive keep their real values.
+---
 
-Repair always reports exactly what it changed in the Diagnostics → Repair log.
-
-## Verified
-
-The engine's test suite drives real save files (a good reference save and the
-original corrupt one). Repaired output has additionally been confirmed to load in
-Godot 4.6 as a valid `CharacterSave` with no broken references.
+Not affiliated with or endorsed by the developers of Road to Vostok. Back up your saves.

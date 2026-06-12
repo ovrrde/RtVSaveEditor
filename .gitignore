@@ -1,3 +1,24 @@
+# Rust / Cargo build output
 /target
-**/*.bak
+/dist
+**/*.rs.bk
+*.pdb
+
+# Note: Cargo.lock is committed on purpose (this is an application).
+
+# Save-editor runtime artifacts
+*.tres.bak
 auto_repaired.tres
+_test_*.tres
+
+# OS cruft
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*~
