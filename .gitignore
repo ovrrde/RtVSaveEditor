@@ -19,7 +19,7 @@ Desktop.ini
 
 # Editors / IDEs
 .vscode/
-.idea/
+.idea/*
 *.swp
 *~
 TODO.md
