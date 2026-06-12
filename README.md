@@ -37,8 +37,15 @@ No install needed - just run it.
 ## Usage
 
 1. **Open** your `Character.tres` (usually under `%APPDATA%\Roaming\Road to Vostok\`).
-2. Set the **project path** to your game install so the editor knows item names, sizes, and slots.
+2. Set the **project path** to the game's extracted project files (see note) so the editor knows item names, sizes, and slots.
 3. Edit, then **Save** - a backup is written automatically.
+
+> [!IMPORTANT]
+> **Getting valid game info.** The editor reads the game's item definitions to show real names,
+> grid sizes, and equipment slots. The game ships its assets in a packed `.pck`, so you first need
+> to extract the project with [**Godot RE Tools**](https://github.com/bruvzg/gdsdecomp), then point
+> the **project path** at the extracted folder. Without it the editor still runs, but falls back to
+> raw `res://` paths and default sizes.
 
 ---
 
