@@ -28,7 +28,10 @@ fn good_save_parses_clean() {
 fn good_save_round_trips_byte_for_byte() {
     let (doc, _) = validate(GOOD);
     let out = doc.to_tres();
-    assert_eq!(out, GOOD, "round trip changed the file");
+    // The parser normalizes line endings to LF by design, so compare against an
+    // LF-normalized fixture (CI on Windows may check the file out as CRLF).
+    let expected = GOOD.replace("\r\n", "\n");
+    assert_eq!(out, expected, "round trip changed the file");
 }
 
 #[test]
