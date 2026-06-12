@@ -1,0 +1,8 @@
+[package]
+name = "rtv_save_core"
+version.workspace = true
+edition.workspace = true
+
+# Intentionally dependency-free: the parser/validator/repair engine is pure std
+# so it compiles instantly and its tests run without pulling the GUI stack.
+[dependencies]

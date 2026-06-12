@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="CharacterSave" format=3]
+
+[ext_resource type="Script" path="res://Scripts/SlotData.gd" id="1"]
+[ext_resource type="Resource" path="res://Items/Weapons/MP5/MP5.tres" id="2"]
+[ext_resource type="Script" path="res://Scripts/ItemData.gd" id="3"]
+[ext_resource type="Resource" path="res://Items/Attachments/Micro/Micro.tres" id="4"]
+[ext_resource type="Resource" path="res://Items/Weapons/MP5/MP5_Magazine.tres" id="5"]
+[ext_resource type="Resource" path="res://Items/Weapons/Colt_1911/Colt_1911.tres" id="6"]
+[ext_resource type="Resource" path="res://Items/Weapons/Colt_1911/Colt_1911_Magazine.tres" id="7"]
+[ext_resource type="Resource" path="res://Items/Clothing/Fleece_Tactical_Green/Fleece_Tactical_Green.tres" id="8"]
+[ext_resource type="Resource" path="res://Items/Clothing/Pants_Hiking/Pants_Hiking.tres" id="9"]
+[ext_resource type="Resource" path="res://Items/Belts/Kukkaro/Kukkaro_Green.tres" id="10"]
+[ext_resource type="Resource" path="res://Items/Clothing/Gloves_Leather/Gloves_Leather.tres" id="11"]
+[ext_resource type="Resource" path="res://Items/Electronics/Polaris/Polaris.tres" id="12"]
+[ext_resource type="Resource" path="res://Items/Consumables/Canned_Meatballs/Canned_Meatballs.tres" id="13"]
+[ext_resource type="Resource" path="res://Items/Consumables/Canned_Tuna/Canned_Tuna.tres" id="14"]
+[ext_resource type="Resource" path="res://Items/Consumables/Juice_Orange/Juice_Orange.tres" id="15"]
+[ext_resource type="Resource" path="res://Items/Weapons/RK-62/RK_Magazine.tres" id="16"]
+[ext_resource type="Resource" path="res://Items/Ammo/Ammo_223/Ammo_223.tres" id="17"]
+[ext_resource type="Resource" path="res://Items/Ammo/Ammo_45ACP/Ammo_45ACP.tres" id="18"]
+[ext_resource type="Resource" path="res://Items/Misc/Nails/Nails.tres" id="19"]
+[ext_resource type="Resource" path="res://Items/Fishing/Fishing_Rod/Fishing_Rod.tres" id="20"]
+[ext_resource type="Resource" path="res://Items/Misc/Duct_Tape/Duct_Tape.tres" id="21"]
+[ext_resource type="Resource" path="res://Items/Consumables/Canned_Pear/Canned_Pear.tres" id="22"]
+[ext_resource type="Resource" path="res://Items/Consumables/Potato/Potato.tres" id="23"]
+[ext_resource type="Resource" path="res://Items/Consumables/Canned_Peas/Canned_Peas.tres" id="24"]
+[ext_resource type="Resource" path="res://Items/Consumables/Juice_Pear/Juice_Pear.tres" id="25"]
+[ext_resource type="Resource" path="res://Items/Consumables/Crackers/Crackers.tres" id="26"]
+[ext_resource type="Resource" path="res://Items/Consumables/Sugar/Sugar.tres" id="27"]
+[ext_resource type="Resource" path="res://Items/Ammo/Ammo_9x19/Ammo_9x19.tres" id="28"]
+[ext_resource type="Resource" path="res://Items/Weapons/Remington_870/Remington_870.tres" id="29"]
+[ext_resource type="Resource" path="res://Items/Medical/Deodorant/Deodorant.tres" id="30"]
+[ext_resource type="Resource" path="res://Items/Medical/Lotion/Lotion.tres" id="31"]
+[ext_resource type="Resource" path="res://Items/Electronics/Narva/Narva.tres" id="32"]
+[ext_resource type="Resource" path="res://Items/Consumables/Yeast/Yeast.tres" id="33"]
+[ext_resource type="Resource" path="res://Items/Weapons/Glock_17/Glock_17.tres" id="34"]
+[ext_resource type="Resource" path="res://Items/Weapons/Glock_17/Glock_17_Magazine.tres" id="35"]
+[ext_resource type="Resource" path="res://Items/Ammo/Ammo_762x39/Ammo_762x39.tres" id="36"]
+[ext_resource type="Script" path="res://Scripts/CharacterSave.gd" id="37"]
+
+[sub_resource type="Resource" id="Resource_qcjjm"]
+script = ExtResource("1")
+itemData = ExtResource("2")
+nested = Array[ExtResource("3")]([ExtResource("4"), ExtResource("5")])
+storage = Array[ExtResource("1")]([])
+condition = 24
+amount = 0
+position = 0
+mode = 2
+zoom = 1
+chamber = true
+casing = false
+state = ""
+gridPosition = Vector2(0, 0)
+gridRotated = false
+slot = "Primary"
+
+[sub_resource type="Resource" id="Resource_v4oqw"]
+script = ExtResource("1")
+itemData = ExtResource("6")
+nested = Array[ExtResource("3")]([ExtResource("7")])
+storage = Array[ExtResource("1")]([])
+condition = 41
+amount = 5
+position = 0
+mode = 1
+zoom = 1
+chamber = true
+casing = fals
